@@ -208,7 +208,7 @@
                             <p className="text-gray-600 text-base leading-relaxed mb-6 font-sans">{data.text}</p>
 
                             <div className="w-full mb-6">
-                                <textarea className="w-full p-3 bg-[#FAF9F6] border border-[#B76E79]/20 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#B76E79] resize-none font-sans" rows="4" placeholder="Escribe aquí tu palabra, reflexión o lo que sientas..." value={note || ''} onChange={(e) => onSaveNote(data.day, e.target.value)} />
+                                <textarea className="w-full p-3 bg-[#FAF9F6] border border-[#B76E79]/20 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#B76E79] resize-none font-sans" rows="4" placeholder="Escribe aquí..." value={note || ''} onChange={(e) => onSaveNote(data.day, e.target.value)} />
                                 <p className="text-[10px] text-gray-400 mt-1 text-right italic">Privado y guardado en tu dispositivo</p>
                             </div>
 
@@ -274,6 +274,7 @@
             const [userNotes, setUserNotes] = useState({});
             const [selectedDay, setSelectedDay] = useState(null);
             const [cheatMode, setCheatMode] = useState(false);
+            const [showAdmin, setShowAdmin] = useState(false);
 
             useEffect(() => {
                 try {
@@ -313,11 +314,27 @@
             return (
                 <div className="min-h-screen flex flex-col">
                     <Header />
-                    <div className="flex justify-center items-center gap-4 py-2 bg-[#FAF9F6] border-b border-gray-200 text-[10px] text-gray-400">
-                        <label className="flex items-center gap-1 cursor-pointer hover:text-[#B76E79]"><input type="checkbox" checked={cheatMode} onChange={(e) => setCheatMode(e.target.checked)} /> Demo</label>
-                        <span>|</span>
-                        <button onClick={() => {if(confirm('¿Borrar todo?')) {setOpenedDoors([]); setUserNotes({});}}} className="hover:text-red-400">Reset</button>
+                    
+                    {/* TRUCO SECRETO: Click esquina sup. izquierda y escribe '-' */}
+                    <div className="fixed top-0 left-0 z-[100]">
+                        <input type="text" autoComplete="off" className="w-10 h-10 opacity-0 cursor-default" 
+                            onChange={(e) => {
+                                if(e.target.value.includes('-')) {
+                                    setShowAdmin(prev => !prev);
+                                    e.target.value = '';
+                                }
+                            }}
+                        />
                     </div>
+
+                    {showAdmin && (
+                        <div className="flex justify-center items-center gap-4 py-2 bg-[#FAF9F6] border-b border-gray-200 text-[10px] text-gray-400">
+                            <label className="flex items-center gap-1 cursor-pointer hover:text-[#B76E79]"><input type="checkbox" checked={cheatMode} onChange={(e) => setCheatMode(e.target.checked)} /> Demo</label>
+                            <span>|</span>
+                            <button onClick={() => {if(confirm('¿Borrar todo?')) {setOpenedDoors([]); setUserNotes({});}}} className="hover:text-red-400">Reset</button>
+                        </div>
+                    )}
+
                     <main className="flex-grow max-w-4xl mx-auto p-4 sm:p-8 w-full">
                         <div className="mb-10 text-center">
                             <p className="text-[#B76E79] font-bold tracking-[0.2em] text-xs mb-3">CALENDARIO DE ADVIENTO 2025</p>
