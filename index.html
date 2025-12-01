@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
     
-    <!-- LIBRERÍAS (Configuración Optimizada V15) -->
+    <!-- LIBRERÍAS (Configuración Optimizada V16) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -40,8 +40,10 @@
             shop: "https://www.silencem.com",
             amazon: "https://www.amazon.es", 
             spotify: "https://open.spotify.com",
-            googleFormLectura: "https://forms.google.com", 
-            googleFormDescuento: "https://forms.google.com" 
+            
+            // --- ENLACES ACTUALIZADOS ---
+            googleFormLectura: "https://forms.gle/8TbUvawXwaMZB3qy7", // <--- ENLACE NUEVO DÍA 3
+            googleFormDescuento: "https://forms.google.com" // Pega aquí el del descuento cuando lo tengas
         };
 
         const BRANDING = {
@@ -56,7 +58,7 @@
             // DÍA 2: Desconexión
             { day: 2, type: 'action', title: 'Desconexión', text: 'Hoy, pon el móvil en modo avión 1 hora antes de dormir. Tu paz es innegociable.', iconType: 'VolumeX' },
             
-            // DÍA 3: Regalo Lectura
+            // DÍA 3: Regalo Lectura (Enlace actualizado)
             { day: 3, type: 'gift', title: 'Regalo: Lectura', text: 'Para nutrir tu mente. Accede para obtener 30 días de lectura ilimitada gratis.', action: 'SOLICITAR REGALO', link: LINKS.googleFormLectura, iconType: 'BookOpen' },
             
             { day: 4, type: 'reflection', title: 'Balance 2024', text: '¿Qué es lo mejor que te ha pasado este año que no habías planeado? Escríbelo abajo.', iconType: 'Heart' },
