@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
-    <!-- Librerías externas -->
+    
+    <!-- CARGA DE LIBRERÍAS (VERSIÓN ROBUSTA V7) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Cargamos la librería de animación correctamente -->
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/4.1.17/framer-motion.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
@@ -20,27 +20,27 @@
         ::-webkit-scrollbar-thumb { background: #B76E79; border-radius: 4px; }
         .font-sans { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
         #root { width: 100%; min-height: 100vh; }
+        
+        /* Loader */
+        #loading { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; justify-content: center; align-items: center; 
+            color: #B76E79; font-size: 20px; z-index: 0;
+        }
     </style>
 </head>
 <body>
+    <div id="loading">Cargando...</div>
     <div id="root"></div>
 
     <script type="text/babel">
-        // --- CORRECCIÓN DEL ERROR DE PANTALLA BLANCA ---
-        // Detectamos si la librería se llama 'FramerMotion' o 'Motion'
-        const MotionLib = window.FramerMotion || window.Motion;
-        
-        // Si por alguna razón falla la carga, creamos un objeto falso para que la web NO se rompa
-        const { motion, AnimatePresence } = MotionLib || { 
-            motion: { div: 'div', a: 'a', button: 'button' }, 
-            AnimatePresence: ({children}) => children 
-        };
-        
+        // --- INICIO DEL CÓDIGO ---
         const { useState, useEffect } = React;
+        const { motion, AnimatePresence } = window.FramerMotion;
         const confetti = window.confetti;
 
         /* =================================================================
-           --- ZONA DE CONFIGURACIÓN (EDITA AQUÍ TUS ENLACES) ---
+           --- ZONA DE CONFIGURACIÓN ---
            ================================================================= */
         
         const LINKS = {
@@ -48,8 +48,6 @@
             shop: "https://www.silencem.com",
             amazon: "https://www.amazon.es", 
             spotify: "https://open.spotify.com",
-            
-            // TUS FORMULARIOS DE GOOGLE
             googleFormLectura: "https://forms.google.com", 
             googleFormDescuento: "https://forms.google.com" 
         };
@@ -61,7 +59,7 @@
         };
 
         const DAYS_DATA = [
-            { day: 1, type: 'mindset', title: 'Intención 2025', text: 'Cierra los ojos. Antes de empezar, ¿qué palabra define cómo quieres sentirte al terminar este nuevo año?', iconType: 'Sparkles' },
+            { day: 1, type: 'mindset', title: 'Intención 2025', text: 'Cierra los ojos. Antes de empezar, ¿qué palabra define cómo quieres sentirte al terminar este nuevo año? Escríbela abajo.', iconType: 'Sparkles' },
             { day: 2, type: 'gift', title: 'Regalo: Lectura', text: 'Para nutrir tu mente. Accede para obtener 30 días de lectura ilimitada gratis.', action: 'SOLICITAR REGALO', link: LINKS.googleFormLectura, iconType: 'BookOpen' },
             { day: 3, type: 'action', title: 'Desconexión', text: 'Hoy, pon el móvil en modo avión 1 hora antes de dormir. Tu paz es innegociable.', iconType: 'VolumeX' },
             { day: 4, type: 'reflection', title: 'Balance 2024', text: '¿Qué es lo mejor que te ha pasado este año que no habías planeado? Escríbelo abajo.', iconType: 'Heart' },
@@ -71,7 +69,7 @@
             { day: 8, type: 'reflection', title: 'Soltar', text: '¿Qué hábito te está drenando energía y estás lista para dejar ir antes de que acabe el año?', iconType: 'X' },
             { day: 9, type: 'action', title: 'Micro-lujo', text: 'Hoy date un pequeño lujo: ese té especial, una mascarilla o 10 min de silencio absoluto.', iconType: 'Gift' },
             { day: 10, type: 'recommendation', title: 'Kit Escritura', text: 'Las herramientas importan. Te recomiendo este pack de bolígrafos premium que yo uso.', action: 'Ver Recomendación', link: LINKS.amazon, iconType: 'ShoppingBag' },
-            { day: 11, type: 'mindset', title: 'Visualización', text: 'Imagina tu versión de enero 2026. ¿Cómo viste? ¿De qué habla? Siéntelo ahora.', iconType: 'Sparkles' },
+            { day: 11, type: 'mindset', title: 'Visualización', text: 'Imagina tu versión de enero 2026. ¿Cómo viste? ¿De qué habla? Siéntelo ahora y toma notas.', iconType: 'Sparkles' },
             { day: 12, type: 'reflection', title: 'Logros', text: 'Celebra una victoria pequeña de esta semana. No hay logro insignificante.', iconType: 'Star' },
             { day: 13, type: 'gift', title: 'Audible Free', text: 'Escucha a tus mentores mientras caminas. 1 mes de prueba gratis.', action: 'Probar Audible', link: LINKS.amazon, iconType: 'Volume2' },
             { day: 14, type: 'action', title: 'Orden', text: 'El orden externo trae calma interna. Organiza hoy solo un cajón o tu escritorio.', iconType: 'BookOpen' },
@@ -103,7 +101,8 @@
             Gift: (p) => <IconBase {...p}><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></IconBase>,
             Globe: (p) => <IconBase {...p}><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></IconBase>,
             Instagram: (p) => <IconBase {...p}><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></IconBase>,
-            Lock: (p) => <IconBase {...p}><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></IconBase>
+            Lock: (p) => <IconBase {...p}><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></IconBase>,
+            ChevronDown: (p) => <IconBase {...p}><polyline points="6 9 12 15 18 9"/></IconBase>
         };
 
         const getIcon = (name) => {
@@ -187,18 +186,18 @@
                             <div className="w-12 h-0.5 bg-gray-200 mb-6 rounded-full" />
                             <p className="text-gray-600 text-base leading-relaxed mb-6 font-sans">{data.text}</p>
 
-                            {data.type === 'reflection' && (
-                                <div className="w-full mb-6">
-                                    <textarea 
-                                        className="w-full p-3 bg-[#FAF9F6] border border-[#B76E79]/20 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#B76E79] resize-none font-sans"
-                                        rows="4"
-                                        placeholder="Escribe tu reflexión aquí... (Se guardará solo en este dispositivo)"
-                                        value={note || ''}
-                                        onChange={(e) => onSaveNote(data.day, e.target.value)}
-                                    />
-                                    <p className="text-[10px] text-gray-400 mt-1 text-right italic">Privado y guardado en tu dispositivo.</p>
-                                </div>
-                            )}
+                            {/* ZONA DE ESCRITURA PARA TODOS LOS DÍAS */}
+                            <div className="w-full mb-6">
+                                <p className="text-xs font-bold text-gray-500 mb-2 text-left uppercase tracking-wide">Tus notas / Reflexión:</p>
+                                <textarea 
+                                    className="w-full p-3 bg-[#FAF9F6] border border-[#B76E79]/20 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#B76E79] resize-none font-sans"
+                                    rows="4"
+                                    placeholder="Escribe aquí tu palabra, reflexión o lo que sientas... (Se guarda en este dispositivo)"
+                                    value={note || ''}
+                                    onChange={(e) => onSaveNote(data.day, e.target.value)}
+                                />
+                                <p className="text-[10px] text-gray-400 mt-1 text-right italic">Privado y guardado en tu dispositivo.</p>
+                            </div>
 
                             {data.code && (
                                 <div className="bg-gray-50 px-6 py-3 rounded-lg border border-dashed border-gray-300 mb-6 cursor-pointer hover:bg-gray-100" onClick={() => {navigator.clipboard.writeText(data.code); alert('Código copiado!')}}>
@@ -218,32 +217,59 @@
             );
         };
 
-        const Footer = () => (
-            <footer className="mt-12 bg-[#1A1A1A] text-white py-12 px-6 text-center">
-                <div className="max-w-2xl mx-auto space-y-8">
-                    <div className="flex justify-center gap-6 text-[#B76E79]">
-                        <a href={LINKS.web} target="_blank"><Icons.Globe className="hover:text-white transition-colors" /></a>
-                        <a href={LINKS.shop} target="_blank"><Icons.ShoppingBag className="hover:text-white transition-colors" /></a>
-                    </div>
-                    <div className="space-y-2">
-                        <p className="font-serif text-xl">{BRANDING.main}</p>
-                        <p className="text-xs text-gray-500 tracking-widest uppercase">{BRANDING.sub} • 2025</p>
-                    </div>
-                    
-                    <div className="text-[10px] text-gray-500 space-y-4 leading-relaxed border-t border-gray-800 pt-8">
-                        <p className="font-bold">AVISO LEGAL</p>
-                        <p>Todos los contenidos relacionados de la marca “{BRANDING.sub}” y la autora "{BRANDING.main}" están protegidos por derechos de propiedad intelectual. Prohibida su reproducción sin autorización. Todos los derechos reservados.</p>
-                        <p>La marca “{BRANDING.sub}®” y la autora "{BRANDING.main}" no se hacen responsables del uso de los productos, servicios o contenidos. Puede incluir contenido promocional o publicidad. No sustituyen terapias profesionales de ningún tipo.</p>
+        const Footer = () => {
+            const [isLegalOpen, setIsLegalOpen] = useState(false);
+
+            return (
+                <footer className="mt-12 bg-[#1A1A1A] text-white py-12 px-6 text-center">
+                    <div className="max-w-2xl mx-auto space-y-8">
+                        <div className="flex justify-center gap-6 text-[#B76E79]">
+                            <a href={LINKS.web} target="_blank"><Icons.Globe className="hover:text-white transition-colors" /></a>
+                            <a href={LINKS.shop} target="_blank"><Icons.ShoppingBag className="hover:text-white transition-colors" /></a>
+                        </div>
+                        <div className="space-y-2">
+                            <p className="font-serif text-xl">{BRANDING.main}</p>
+                            <p className="text-xs text-gray-500 tracking-widest uppercase">{BRANDING.sub} • 2025</p>
+                        </div>
                         
-                        <div className="bg-gray-900 p-4 rounded mt-4">
-                            <p className="text-[#B76E79] font-bold mb-1">¿ALGO NO FUNCIONA BIEN?</p>
-                            <p>Esta página web y relacionados está experimentando constantes actualizaciones.</p>
-                            <p>Contacto: <a href="mailto:silencem.com@gmail.com" className="underline hover:text-white">silencem.com@gmail.com</a></p>
+                        {/* AVISO LEGAL DESPLEGABLE */}
+                        <div className="border-t border-gray-800 pt-8 mt-8">
+                            <button 
+                                onClick={() => setIsLegalOpen(!isLegalOpen)}
+                                className="flex items-center justify-center gap-2 w-full text-xs font-bold text-gray-500 hover:text-white transition-colors uppercase tracking-widest outline-none"
+                            >
+                                <span>Leer Aviso Legal y Contacto</span>
+                                <motion.div animate={{ rotate: isLegalOpen ? 180 : 0 }}>
+                                    <Icons.ChevronDown size={14} />
+                                </motion.div>
+                            </button>
+
+                            <AnimatePresence>
+                                {isLegalOpen && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div className="text-[10px] text-gray-500 space-y-4 leading-relaxed text-left mt-6 px-4">
+                                            <p>Todos los contenidos relacionados de la marca “{BRANDING.sub}” y la autora "{BRANDING.main}" están protegidos por derechos de propiedad intelectual. Prohibida su reproducción sin autorización. Todos los derechos reservados.</p>
+                                            <p>La marca “{BRANDING.sub}®” y la autora "{BRANDING.main}" no se hacen responsables del uso de los productos, servicios o contenidos. Puede incluir contenido promocional o publicidad. No sustituyen terapias profesionales de ningún tipo.</p>
+                                            
+                                            <div className="bg-gray-900 p-4 rounded mt-4 text-center">
+                                                <p className="text-[#B76E79] font-bold mb-1">¿ALGO NO FUNCIONA BIEN?</p>
+                                                <p>Esta página web y relacionados está experimentando constantes actualizaciones.</p>
+                                                <p>Contacto: <a href="mailto:silencem.com@gmail.com" className="underline hover:text-white">silencem.com@gmail.com</a></p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
                         </div>
                     </div>
-                </div>
-            </footer>
-        );
+                </footer>
+            );
+        };
 
         const AdventCalendar = () => {
             const [openedDoors, setOpenedDoors] = useState([]);
@@ -253,6 +279,7 @@
             const currentDate = new Date();
 
             useEffect(() => {
+                document.getElementById('loading').style.display = 'none';
                 try {
                     const savedDoors = localStorage.getItem('silencem_advent_doors_v2');
                     const savedNotes = localStorage.getItem('silencem_advent_notes_v2');
@@ -343,22 +370,11 @@
                             />
                         )}
                     </AnimatePresence>
-                    
-                    <motion.div initial={{ y: 100 }} animate={{ y: 0 }} className="fixed bottom-4 right-4 bg-white p-3 rounded shadow-xl border border-[#B76E79]/30 flex items-center gap-4 z-40 max-w-xs">
-                        <div className="text-xs">
-                            <p className="font-bold text-[#B76E79]">Silencem 2025</p>
-                            <p className="text-gray-600">Tu herramienta de vida.</p>
-                        </div>
-                        <a href={LINKS.shop} target="_blank" className="bg-[#1A1A1A] text-white text-[10px] uppercase font-bold px-3 py-2 rounded hover:bg-[#B76E79] transition-colors whitespace-nowrap">
-                            Ver Tienda
-                        </a>
-                    </motion.div>
                 </div>
             );
         };
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<AdventCalendar />);
+        const root = ReactDOM.render(<AdventCalendar />, document.getElementById('root'));
     </script>
 </body>
 </html>
