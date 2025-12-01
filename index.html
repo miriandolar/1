@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
     
-    <!-- LIBRERÍAS (Configuración Optimizada V13) -->
+    <!-- LIBRERÍAS (Configuración Optimizada V15) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -52,8 +52,13 @@
 
         const DAYS_DATA = [
             { day: 1, type: 'mindset', title: 'Intención 2025', text: 'Cierra los ojos. Antes de empezar, ¿qué palabra define cómo quieres sentirte al terminar este nuevo año? Escríbela abajo.', iconType: 'Sparkles' },
-            { day: 2, type: 'gift', title: 'Regalo: Lectura', text: 'Para nutrir tu mente. Accede para obtener 30 días de lectura ilimitada gratis.', action: 'SOLICITAR REGALO', link: LINKS.googleFormLectura, iconType: 'BookOpen' },
-            { day: 3, type: 'action', title: 'Desconexión', text: 'Hoy, pon el móvil en modo avión 1 hora antes de dormir. Tu paz es innegociable.', iconType: 'VolumeX' },
+            
+            // DÍA 2: Desconexión
+            { day: 2, type: 'action', title: 'Desconexión', text: 'Hoy, pon el móvil en modo avión 1 hora antes de dormir. Tu paz es innegociable.', iconType: 'VolumeX' },
+            
+            // DÍA 3: Regalo Lectura
+            { day: 3, type: 'gift', title: 'Regalo: Lectura', text: 'Para nutrir tu mente. Accede para obtener 30 días de lectura ilimitada gratis.', action: 'SOLICITAR REGALO', link: LINKS.googleFormLectura, iconType: 'BookOpen' },
+            
             { day: 4, type: 'reflection', title: 'Balance 2024', text: '¿Qué es lo mejor que te ha pasado este año que no habías planeado? Escríbelo abajo.', iconType: 'Heart' },
             { day: 5, type: 'promo', title: 'Agenda Silencem', text: 'Organiza tu 2025 con propósito. Consigue tu código exclusivo del 15% rellenando el formulario.', action: 'CANJEAR CÓDIGO', link: LINKS.googleFormDescuento, iconType: 'ShoppingBag' },
             { day: 6, type: 'mindset', title: 'Gratitud', text: 'Escribe 3 cosas simples por las que agradeces hoy (un café, el sol, una sonrisa).', iconType: 'Star' },
@@ -162,7 +167,6 @@
 
         const Modal = ({ isOpen, onClose, data, note, onSaveNote }) => {
             if (!isOpen || !data) return null;
-            // Solo mostramos el cuadro de texto si es mindset, reflexión o acción
             const showNote = ['mindset', 'reflection', 'action'].includes(data.type);
 
             return (
@@ -177,7 +181,6 @@
                             <h2 className="text-2xl font-serif text-gray-900 mb-4 leading-tight">{data.title}</h2>
                             <p className="text-gray-600 text-base leading-relaxed mb-6 font-sans">{data.text}</p>
 
-                            {/* ZONA DE ESCRITURA CONDICIONAL */}
                             {showNote && (
                                 <div className="w-full mb-6">
                                     <textarea className="w-full p-3 bg-[#FAF9F6] border border-[#B76E79]/20 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#B76E79] resize-none font-sans" rows="4" placeholder="Escribe aquí..." value={note || ''} onChange={(e) => onSaveNote(data.day, e.target.value)} />
@@ -262,12 +265,12 @@
                 }, 400);
             };
 
-            // TRUCO SECRETO: Esquina superior izquierda invisible
+            // TRUCO SECRETO: Esquina superior izquierda invisible + Código '.'
             return (
                 <div className="min-h-screen flex flex-col">
                     <Header />
                     <div className="fixed top-0 left-0 w-16 h-16 z-[100] cursor-default" onClick={() => {}}>
-                        <input type="text" autoComplete="off" className="w-full h-full opacity-0 cursor-default" onChange={(e) => { if(e.target.value.includes('--')) { setShowAdmin(prev => !prev); e.target.value = ''; } }} />
+                        <input type="text" autoComplete="off" className="w-full h-full opacity-0 cursor-default" onChange={(e) => { if(e.target.value.includes('.')) { setShowAdmin(prev => !prev); e.target.value = ''; } }} />
                     </div>
                     {showAdmin && <motion.div initial={{y:-50}} animate={{y:0}} className="fixed top-0 left-0 w-full bg-black/90 text-white z-[9998] p-2 flex justify-center gap-4 text-xs"><label className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={cheatMode} onChange={(e) => setCheatMode(e.target.checked)} /> MODO DEMO</label><span>|</span><button onClick={() => {if(confirm('¿Borrar todo?')) {setOpenedDoors([]); setUserNotes({});}}} className="text-red-400 hover:text-red-200">RESETEAR PROGRESO</button></motion.div>}
                     <main className="flex-grow max-w-4xl mx-auto p-4 sm:p-8 w-full">
