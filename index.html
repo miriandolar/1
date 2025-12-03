@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
     
-    <!-- LIBRERÍAS (Configuración Optimizada V16) -->
+    <!-- LIBRERÍAS (Configuración V20) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -34,16 +34,21 @@
 
         setTimeout(() => { const l = document.getElementById('loading'); if(l) l.style.opacity = '0'; }, 500);
 
-        /* --- CONFIGURACIÓN --- */
+        /* --- CONFIGURACIÓN DE ENLACES --- */
         const LINKS = {
             web: "https://www.miriamlara.es",
             shop: "https://www.silencem.com",
             amazon: "https://www.amazon.es", 
-            spotify: "https://open.spotify.com",
             
-            // --- ENLACES ACTUALIZADOS ---
-            googleFormLectura: "https://forms.gle/8TbUvawXwaMZB3qy7", // <--- ENLACE NUEVO DÍA 3
-            googleFormDescuento: "https://forms.google.com" // Pega aquí el del descuento cuando lo tengas
+            // Enlaces Específicos
+            contacto: "https://link.miriamlara.es/contacto",
+            formLectura: "https://forms.gle/8TbUvawXwaMZB3qy7",
+            agenda: "https://link.miriamlara.es/m26",
+            musica: "https://link.miriamlara.es/musica",
+            regaloAudible: "https://link.miriamlara.es/regalo2",
+            regaloMusic: "https://link.miriamlara.es/regalo3",
+            regaloPrime: "https://link.miriamlara.es/regalo4",
+            sorpresaFinal: "https://link.miriamlara.es/sorpresa"
         };
 
         const BRANDING = {
@@ -53,38 +58,33 @@
         };
 
         const DAYS_DATA = [
-            { day: 1, type: 'mindset', title: 'Intención 2025', text: 'Cierra los ojos. Antes de empezar, ¿qué palabra define cómo quieres sentirte al terminar este nuevo año? Escríbela abajo.', iconType: 'Sparkles' },
-            
-            // DÍA 2: Desconexión
+            { day: 1, type: 'mindset', title: 'Intención 2025', text: 'Cierra los ojos. Antes de empezar, ¿qué palabra define cómo quieres sentirte al terminar este año? Escríbela abajo.', iconType: 'Sparkles' },
             { day: 2, type: 'action', title: 'Desconexión', text: 'Hoy, pon el móvil en modo avión 1 hora antes de dormir. Tu paz es innegociable.', iconType: 'VolumeX' },
-            
-            // DÍA 3: Regalo Lectura (Enlace actualizado)
-            { day: 3, type: 'gift', title: 'Regalo: Lectura', text: 'Para nutrir tu mente. Accede para obtener 30 días de lectura ilimitada gratis.', action: 'SOLICITAR REGALO', link: LINKS.googleFormLectura, iconType: 'BookOpen' },
-            
-            { day: 4, type: 'reflection', title: 'Balance 2024', text: '¿Qué es lo mejor que te ha pasado este año que no habías planeado? Escríbelo abajo.', iconType: 'Heart' },
-            { day: 5, type: 'promo', title: 'Agenda Silencem', text: 'Organiza tu 2025 con propósito. Consigue tu código exclusivo del 15% rellenando el formulario.', action: 'CANJEAR CÓDIGO', link: LINKS.googleFormDescuento, iconType: 'ShoppingBag' },
-            { day: 6, type: 'mindset', title: 'Gratitud', text: 'Escribe 3 cosas simples por las que agradeces hoy (un café, el sol, una sonrisa).', iconType: 'Star' },
-            { day: 7, type: 'recommendation', title: 'Playlist Focus', text: 'Mi recomendación musical para trabajar en tus metas sin distracciones.', action: 'Escuchar en Spotify', link: LINKS.spotify, iconType: 'Volume2' },
-            { day: 8, type: 'reflection', title: 'Soltar', text: '¿Qué hábito te está drenando energía y estás lista para dejar ir antes de que acabe el año?', iconType: 'X' },
-            { day: 9, type: 'action', title: 'Micro-lujo', text: 'Hoy date un pequeño lujo: ese té especial, una mascarilla o 10 min de silencio absoluto.', iconType: 'Gift' },
-            { day: 10, type: 'recommendation', title: 'Kit Escritura', text: 'Las herramientas importan. Te recomiendo este pack de bolígrafos premium que yo uso.', action: 'Ver Recomendación', link: LINKS.amazon, iconType: 'ShoppingBag' },
-            { day: 11, type: 'mindset', title: 'Visualización', text: 'Imagina tu versión de enero 2026. ¿Cómo viste? ¿De qué habla? Siéntelo ahora y toma notas.', iconType: 'Sparkles' },
-            { day: 12, type: 'reflection', title: 'Logros', text: 'Celebra una victoria pequeña de esta semana. No hay logro insignificante.', iconType: 'Star' },
-            { day: 13, type: 'gift', title: 'Audible Free', text: 'Escucha a tus mentores mientras caminas. 1 mes de prueba gratis.', action: 'Probar Audible', link: LINKS.amazon, iconType: 'Volume2' },
-            { day: 14, type: 'action', title: 'Orden', text: 'El orden externo trae calma interna. Organiza hoy solo un cajón o tu escritorio.', iconType: 'BookOpen' },
-            { day: 15, type: 'promo', title: 'Curso Metas', text: 'Masterclass exclusiva: "Diseña tu año ideal". Acceso anticipado.', action: 'Más Información', link: LINKS.web, iconType: 'Globe' },
+            { day: 3, type: 'gift', title: 'Regalo: Lectura', text: 'Para nutrir tu mente. Accede a una prueba gratis de lecturas ilimitada en Kindle Unlimited.', action: 'SOLICITAR REGALO', link: LINKS.formLectura, iconType: 'BookOpen' },
+            { day: 4, type: 'reflection', title: 'Soltar', text: '¿Qué hábito te está drenando energía y estás lista para dejar ir antes de que acabe el año?', iconType: 'X' },
+            { day: 5, type: 'gift', title: 'Audible Free', text: 'Escucha a tus mentores o novelas mientras caminas. Prueba gratis.', action: 'SOLICITAR REGALO', link: LINKS.regaloAudible, iconType: 'Volume2' },
+            { day: 6, type: 'reflection', title: 'Balance 2025', text: '¿Qué es lo mejor que te ha pasado este año que no habías planeado? Escríbelo abajo.', iconType: 'Heart' },
+            { day: 7, type: 'action', title: 'Micro-lujo', text: 'Hoy date un pequeño lujo: ese té especial, una mascarilla o 10 min de silencio absoluto.', iconType: 'Gift' },
+            { day: 8, type: 'promo', title: 'Agenda Silencem', text: 'Organiza tu 2026 con propósito. Accede al botón de abajo para ver si puedes obtener algún descuento.', action: 'VER AGENDA', link: LINKS.agenda, iconType: 'ShoppingBag' },
+            { day: 9, type: 'action', title: 'Orden', text: 'El orden externo trae calma interna. Organiza hoy solo un cajón o tu escritorio.', iconType: 'BookOpen' },
+            { day: 10, type: 'gift', title: 'Amazon Music', text: 'Escucha tu música favorita para sentir más energía positiva al despertar.', action: 'SOLICITAR REGALO', link: LINKS.regaloMusic, iconType: 'Volume2' },
+            { day: 11, type: 'reflection', title: 'Logros', text: 'Celebra una victoria pequeña de esta semana. No hay logro insignificante.', iconType: 'Star' },
+            { day: 12, type: 'mindset', title: 'Gratitud', text: 'Escribe 3 cosas simples por las que agradeces hoy (un café, el sol, una sonrisa).', iconType: 'Star' },
+            { day: 13, type: 'recommendation', title: 'Recomendación', text: 'Libro con los fundamentos para cambiarte a tí y así la realidad que vives.', action: 'Ver Recomendación', link: LINKS.amazon, iconType: 'BookOpen' },
+            { day: 14, type: 'recommendation', title: 'Playlist Relax', text: 'Mi recomendación musical para trabajar en tus metas sin distracciones.', action: 'ESCUCHAR', link: LINKS.musica, iconType: 'Volume2' },
+            { day: 15, type: 'mindset', title: 'Visualización', text: 'Imagina tu versión de enero 2026. ¿Cómo viste? ¿De qué habla? Siéntelo ahora y toma notas.', iconType: 'Sparkles' },
             { day: 16, type: 'reflection', title: 'Energía', text: '¿Quiénes son las 3 personas que más te inspiran actualmente?', iconType: 'Heart' },
-            { day: 17, type: 'mindset', title: 'Afirmación', text: 'Repite conmigo: "Merezco el éxito y la abundancia que estoy creando".', iconType: 'Sparkles' },
-            { day: 18, type: 'gift', title: 'Wallpaper', text: 'Un fondo de pantalla minimalista para recordarte tu foco.', action: 'Descargar', link: '#', iconType: 'Instagram' },
-            { day: 19, type: 'action', title: 'Conexión', text: 'Escribe a esa amiga que hace mucho que no ves. Cultiva tus relaciones.', iconType: 'Heart' },
-            { day: 20, type: 'recommendation', title: 'Pack Regalo', text: '¿Buscas regalo? Pack Silencem con envoltorio especial incluido.', action: 'Ver Pack', link: LINKS.shop, iconType: 'Gift' },
-            { day: 21, type: 'reflection', title: 'Miedos', text: '¿Qué harías si supieras que no vas a fallar?', iconType: 'Star' },
-            { day: 22, type: 'mindset', title: 'Descanso', text: 'La productividad también es descansar. Hoy permítete no hacer nada productivo por 1h.', iconType: 'VolumeX' },
+            { day: 17, type: 'mindset', title: 'Descanso', text: 'La productividad también es descansar. Hoy permítete no hacer nada productivo por 1h.', iconType: 'VolumeX' },
+            { day: 18, type: 'reflection', title: 'Miedos', text: '¿Qué harías si supieras que no vas a fallar?', iconType: 'Star' },
+            { day: 19, type: 'gift', title: 'Prime Video', text: 'Mira una prueba gratuita de tus series favoritas esta navidad. TV + mantita = relax asegurado.', action: 'SOLICITAR REGALO', link: LINKS.regaloPrime, iconType: 'Gift' },
+            { day: 20, type: 'action', title: 'Conexión', text: 'Escribe a esa amiga que hace mucho que no ves. Cultiva tus relaciones.', iconType: 'Heart' },
+            { day: 21, type: 'recommendation', title: 'Movimiento', text: 'Busca un momento y haz este ejercicio: ponte de pie, estira tu espalda y alza los brazos hacia arriba con una gran sonrisa. Siente cómo cambió la energía.', iconType: 'Star' },
+            { day: 22, type: 'mindset', title: 'Afirmación', text: 'Repite conmigo: "Merezco recibir éxito, abundancia y paz".', iconType: 'Sparkles' },
             { day: 23, type: 'action', title: 'Carta Futura', text: 'Escribe una carta a tu yo del próximo diciembre 2025. Guárdala.', iconType: 'BookOpen' },
-            { day: 24, type: 'promo', title: 'GRAN FINAL', text: '¡Feliz Navidad! Empieza tu mejor año ahora con una sorpresa especial.', action: 'CANJEAR SORPRESA', link: LINKS.googleFormDescuento, iconType: 'Gift' },
+            { day: 24, type: 'promo', title: 'GRAN FINAL', text: '¡Feliz Navidad! Pulsa el botón para una sorpresa especial.', action: 'CANJEAR SORPRESA', link: LINKS.sorpresaFinal, iconType: 'Gift' },
         ];
 
-        /* --- SONIDOS --- */
+        /* --- SONIDOS Y UTILIDADES --- */
         const playSound = (type) => {
             try {
                 const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -119,7 +119,7 @@
             ShoppingBag: () => <IconBase><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></IconBase>,
             Star: () => <IconBase><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></IconBase>,
             Volume2: () => <IconBase><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></IconBase>,
-            X: () => <IconBase><path d="M18 6 6 18"/><path d="m6 6 18 18"/></IconBase>,
+            X: () => <IconBase><path d="M18 6L6 18M6 6l12 12"/></IconBase>, 
             Gift: () => <IconBase><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></IconBase>,
             Globe: () => <IconBase><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></IconBase>,
             Instagram: () => <IconBase><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></IconBase>,
@@ -131,10 +131,14 @@
 
         // --- COMPONENTES ---
         const Header = () => (
-            <header className="flex flex-col items-center justify-center py-8 px-4 bg-gradient-to-b from-[#1a1a1a] to-[#2d2d2d] text-white shadow-lg sticky top-0 z-30">
-                <motion.div initial={{ y: -20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="text-center">
-                    <h1 className="text-3xl font-serif tracking-widest text-[#B76E79]">{BRANDING.sub}</h1>
-                </motion.div>
+            <header className="relative flex flex-col items-center justify-center py-10 px-4 bg-gradient-to-b from-[#1a1a1a] to-[#2d2d2d] text-white shadow-lg sticky top-0 z-30">
+                <div className="text-center w-full">
+                    <h1 className="text-3xl md:text-4xl font-serif tracking-[0.2em] text-[#B76E79] font-bold">SILENCEM</h1>
+                </div>
+                {/* BOTÓN RECORDATORIO */}
+                <a href={LINKS.contacto} target="_blank" className="absolute top-6 right-6 bg-white/10 border border-[#B76E79]/50 text-[#B76E79] px-4 py-2 rounded-full text-[10px] md:text-xs font-bold hover:bg-[#B76E79] hover:text-white transition-all uppercase tracking-widest backdrop-blur-sm shadow-lg">
+                    ACTIVAR RECORDATORIO
+                </a>
             </header>
         );
 
@@ -169,7 +173,16 @@
 
         const Modal = ({ isOpen, onClose, data, note, onSaveNote }) => {
             if (!isOpen || !data) return null;
-            const showNote = ['mindset', 'reflection', 'action'].includes(data.type);
+            
+            const isGiftOrPromo = data.action && (
+                data.action.includes('SOLICITAR') || 
+                data.action.includes('CANJEAR') || 
+                data.action.includes('VER AGENDA') ||
+                data.action.includes('Ver Recomendación') ||
+                data.action.includes('ESCUCHAR')
+            );
+            
+            const shouldShowNote = !isGiftOrPromo || data.title === 'Movimiento';
 
             return (
                 <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -183,14 +196,13 @@
                             <h2 className="text-2xl font-serif text-gray-900 mb-4 leading-tight">{data.title}</h2>
                             <p className="text-gray-600 text-base leading-relaxed mb-6 font-sans">{data.text}</p>
 
-                            {showNote && (
+                            {shouldShowNote && (
                                 <div className="w-full mb-6">
-                                    <textarea className="w-full p-3 bg-[#FAF9F6] border border-[#B76E79]/20 rounded-lg text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#B76E79] resize-none font-sans" rows="4" placeholder="Escribe aquí..." value={note || ''} onChange={(e) => onSaveNote(data.day, e.target.value)} />
+                                    <textarea className="w-full p-3 bg-[#FAF9F6] border border-[#B76E79]/40 rounded-lg text-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#B76E79] resize-none font-sans" rows="5" placeholder="Escribe aquí tu respuesta o reflexiones del ejercicio de hoy…" value={note || ''} onChange={(e) => onSaveNote(data.day, e.target.value)} />
                                     <p className="text-[10px] text-gray-400 mt-1 text-right italic">Privado y guardado en tu dispositivo</p>
                                 </div>
                             )}
 
-                            {data.code && <div className="bg-gray-50 px-6 py-3 rounded-lg border border-dashed border-gray-300 mb-6 cursor-pointer hover:bg-gray-100" onClick={() => {navigator.clipboard.writeText(data.code); playSound('pop'); alert('Código copiado!')}}><span className="text-lg font-mono font-bold tracking-wider text-[#B76E79]">{data.code}</span></div>}
                             {data.action && <motion.a whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} href={data.link} target="_blank" className="w-full py-3 bg-[#1A1A1A] text-white text-base rounded hover:bg-[#333] transition-all shadow-lg flex items-center justify-center gap-2 uppercase tracking-wide text-xs font-bold">{data.action} <Icons.Sparkles /></motion.a>}
                         </div>
                     </motion.div>
@@ -267,14 +279,36 @@
                 }, 400);
             };
 
-            // TRUCO SECRETO: Esquina superior izquierda invisible + Código '.'
+            const handleCloseDoors = () => {
+                setOpenedDoors([]);
+                setSelectedDay(null);
+            };
+
+            const handleTotalReset = () => {
+                if(confirm('⚠️ ATENCIÓN: Esto borrará todas las notas escritas y cerrará las puertas.\n\n¿Estás segura?')) {
+                    setOpenedDoors([]);
+                    setUserNotes({});
+                    setSelectedDay(null);
+                    localStorage.removeItem('silencem_advent_doors_v2');
+                    localStorage.removeItem('silencem_advent_notes_v2');
+                }
+            };
+
+            // TRUCO SECRETO: '.'
             return (
                 <div className="min-h-screen flex flex-col">
                     <Header />
                     <div className="fixed top-0 left-0 w-16 h-16 z-[100] cursor-default" onClick={() => {}}>
                         <input type="text" autoComplete="off" className="w-full h-full opacity-0 cursor-default" onChange={(e) => { if(e.target.value.includes('.')) { setShowAdmin(prev => !prev); e.target.value = ''; } }} />
                     </div>
-                    {showAdmin && <motion.div initial={{y:-50}} animate={{y:0}} className="fixed top-0 left-0 w-full bg-black/90 text-white z-[9998] p-2 flex justify-center gap-4 text-xs"><label className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={cheatMode} onChange={(e) => setCheatMode(e.target.checked)} /> MODO DEMO</label><span>|</span><button onClick={() => {if(confirm('¿Borrar todo?')) {setOpenedDoors([]); setUserNotes({});}}} className="text-red-400 hover:text-red-200">RESETEAR PROGRESO</button></motion.div>}
+                    {showAdmin && <motion.div initial={{y:-50}} animate={{y:0}} className="fixed top-0 left-0 w-full bg-black/90 text-white z-[9998] p-2 flex flex-col sm:flex-row justify-center items-center gap-4 text-xs">
+                        <label className="flex items-center gap-2 cursor-pointer"><input type="checkbox" checked={cheatMode} onChange={(e) => setCheatMode(e.target.checked)} /> MODO DEMO</label>
+                        <span className="hidden sm:inline">|</span>
+                        <div className="flex gap-4">
+                            <button onClick={handleCloseDoors} className="text-yellow-400 hover:text-yellow-200 font-bold">CERRAR PUERTAS (Guarda notas)</button>
+                            <button onClick={handleTotalReset} className="text-red-400 hover:text-red-200 font-bold">BORRADO TOTAL</button>
+                        </div>
+                    </motion.div>}
                     <main className="flex-grow max-w-4xl mx-auto p-4 sm:p-8 w-full">
                         <div className="mb-10 text-center"><p className="text-[#B76E79] font-bold tracking-[0.2em] text-xs mb-3">CALENDARIO DE ADVIENTO 2025</p><h2 className="text-3xl md:text-5xl font-serif text-gray-900 leading-tight">Cierra ciclos, <br/><span className="italic text-[#B76E79]">abre caminos.</span></h2></div>
                         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
