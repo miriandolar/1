@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
     
-    <!-- LIBRERÍAS (Configuración V20) -->
+    <!-- LIBRERÍAS (Configuración V21) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -42,7 +42,7 @@
             
             // Enlaces Específicos
             contacto: "https://link.miriamlara.es/contacto",
-            formLectura: "https://forms.gle/8TbUvawXwaMZB3qy7",
+            formLectura: "https://link.miriamlara.es/regalo1", // <--- ENLACE ACTUALIZADO
             agenda: "https://link.miriamlara.es/m26",
             musica: "https://link.miriamlara.es/musica",
             regaloAudible: "https://link.miriamlara.es/regalo2",
@@ -52,7 +52,7 @@
         };
 
         const BRANDING = {
-            main: "Miriam Lara",
+            main: "Miriam Lara Ramos",
             sub: "Silencem",
             instagram: "@miriamlara"
         };
@@ -84,7 +84,7 @@
             { day: 24, type: 'promo', title: 'GRAN FINAL', text: '¡Feliz Navidad! Pulsa el botón para una sorpresa especial.', action: 'CANJEAR SORPRESA', link: LINKS.sorpresaFinal, iconType: 'Gift' },
         ];
 
-        /* --- SONIDOS Y UTILIDADES --- */
+        /* --- SONIDOS --- */
         const playSound = (type) => {
             try {
                 const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -231,6 +231,7 @@
                                         <div className="text-base text-gray-300 space-y-4 leading-relaxed text-left mt-6 px-4">
                                             <p>Todos los contenidos relacionados de la marca “{BRANDING.sub}” y la autora "{BRANDING.main}" están protegidos por derechos de propiedad intelectual. Prohibida su reproducción sin autorización. Todos los derechos reservados.</p>
                                             <p>La marca “{BRANDING.sub}®” y la autora "{BRANDING.main}" no se hacen responsables del uso de los productos, servicios o contenidos. Puede incluir contenido promocional o publicidad. No sustituyen terapias profesionales de ningún tipo.</p>
+                                            <p><strong>Privacidad y Datos:</strong> Al facilitar voluntariamente sus datos en este sitio web, el usuario acepta su uso para las finalidades descritas en cada caso. Los datos serán tratados con respeto. La suscripción puede cancelarse en cualquier momento contactando al email facilitado. La autora no asume responsabilidad alguna sobre las políticas de privacidad, tratamiento de datos o acciones realizadas por plataformas de terceros (como Google o Amazon) ajenas a este dominio.</p>
                                             <div className="bg-gray-900 p-4 rounded mt-4 text-center text-sm">
                                                 <p className="text-[#B76E79] font-bold mb-1">¿ALGO NO FUNCIONA BIEN?</p>
                                                 <p>Esta página web y relacionados está experimentando constantes actualizaciones.</p>
