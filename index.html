@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
     
-    <!-- LIBRERÍAS (Configuración V21) -->
+    <!-- LIBRERÍAS (Configuración V22) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -42,7 +42,7 @@
             
             // Enlaces Específicos
             contacto: "https://link.miriamlara.es/contacto",
-            formLectura: "https://link.miriamlara.es/regalo1", // <--- ENLACE ACTUALIZADO
+            formLectura: "https://link.miriamlara.es/regalo1",
             agenda: "https://link.miriamlara.es/m26",
             musica: "https://link.miriamlara.es/musica",
             regaloAudible: "https://link.miriamlara.es/regalo2",
@@ -52,35 +52,82 @@
         };
 
         const BRANDING = {
-            main: "Miriam Lara Ramos",
+            main: "Miriam Lara",
             sub: "Silencem",
             instagram: "@miriamlara"
         };
 
         const DAYS_DATA = [
+            // 1. Intención
             { day: 1, type: 'mindset', title: 'Intención 2025', text: 'Cierra los ojos. Antes de empezar, ¿qué palabra define cómo quieres sentirte al terminar este año? Escríbela abajo.', iconType: 'Sparkles' },
+            
+            // 2. Desconexión
             { day: 2, type: 'action', title: 'Desconexión', text: 'Hoy, pon el móvil en modo avión 1 hora antes de dormir. Tu paz es innegociable.', iconType: 'VolumeX' },
+            
+            // 3. Regalo Lectura
             { day: 3, type: 'gift', title: 'Regalo: Lectura', text: 'Para nutrir tu mente. Accede a una prueba gratis de lecturas ilimitada en Kindle Unlimited.', action: 'SOLICITAR REGALO', link: LINKS.formLectura, iconType: 'BookOpen' },
+            
+            // 4. Soltar
             { day: 4, type: 'reflection', title: 'Soltar', text: '¿Qué hábito te está drenando energía y estás lista para dejar ir antes de que acabe el año?', iconType: 'X' },
+            
+            // 5. Audible Free
             { day: 5, type: 'gift', title: 'Audible Free', text: 'Escucha a tus mentores o novelas mientras caminas. Prueba gratis.', action: 'SOLICITAR REGALO', link: LINKS.regaloAudible, iconType: 'Volume2' },
+            
+            // 6. Balance 2025
             { day: 6, type: 'reflection', title: 'Balance 2025', text: '¿Qué es lo mejor que te ha pasado este año que no habías planeado? Escríbelo abajo.', iconType: 'Heart' },
+            
+            // 7. Micro-lujo
             { day: 7, type: 'action', title: 'Micro-lujo', text: 'Hoy date un pequeño lujo: ese té especial, una mascarilla o 10 min de silencio absoluto.', iconType: 'Gift' },
-            { day: 8, type: 'promo', title: 'Agenda Silencem', text: 'Organiza tu 2026 con propósito. Accede al botón de abajo para ver si puedes obtener algún descuento.', action: 'VER AGENDA', link: LINKS.agenda, iconType: 'ShoppingBag' },
-            { day: 9, type: 'action', title: 'Orden', text: 'El orden externo trae calma interna. Organiza hoy solo un cajón o tu escritorio.', iconType: 'BookOpen' },
-            { day: 10, type: 'gift', title: 'Amazon Music', text: 'Escucha tu música favorita para sentir más energía positiva al despertar.', action: 'SOLICITAR REGALO', link: LINKS.regaloMusic, iconType: 'Volume2' },
-            { day: 11, type: 'reflection', title: 'Logros', text: 'Celebra una victoria pequeña de esta semana. No hay logro insignificante.', iconType: 'Star' },
-            { day: 12, type: 'mindset', title: 'Gratitud', text: 'Escribe 3 cosas simples por las que agradeces hoy (un café, el sol, una sonrisa).', iconType: 'Star' },
-            { day: 13, type: 'recommendation', title: 'Recomendación', text: 'Libro con los fundamentos para cambiarte a tí y así la realidad que vives.', action: 'Ver Recomendación', link: LINKS.amazon, iconType: 'BookOpen' },
-            { day: 14, type: 'recommendation', title: 'Playlist Relax', text: 'Mi recomendación musical para trabajar en tus metas sin distracciones.', action: 'ESCUCHAR', link: LINKS.musica, iconType: 'Volume2' },
-            { day: 15, type: 'mindset', title: 'Visualización', text: 'Imagina tu versión de enero 2026. ¿Cómo viste? ¿De qué habla? Siéntelo ahora y toma notas.', iconType: 'Sparkles' },
-            { day: 16, type: 'reflection', title: 'Energía', text: '¿Quiénes son las 3 personas que más te inspiran actualmente?', iconType: 'Heart' },
-            { day: 17, type: 'mindset', title: 'Descanso', text: 'La productividad también es descansar. Hoy permítete no hacer nada productivo por 1h.', iconType: 'VolumeX' },
-            { day: 18, type: 'reflection', title: 'Miedos', text: '¿Qué harías si supieras que no vas a fallar?', iconType: 'Star' },
+            
+            // 8. Gratitud (Antes día 12)
+            { day: 8, type: 'mindset', title: 'Gratitud', text: 'Escribe 3 cosas simples por las que agradeces hoy (un café, el sol, una sonrisa).', iconType: 'Star' },
+            
+            // 9. Playlist Relax (Antes día 14)
+            { day: 9, type: 'recommendation', title: 'Playlist Relax', text: 'Mi recomendación musical para trabajar en tus metas sin distracciones.', action: 'ESCUCHAR', link: LINKS.musica, iconType: 'Volume2' },
+            
+            // 10. Movimiento (Antes día 21)
+            { day: 10, type: 'recommendation', title: 'Movimiento', text: 'Busca un momento y haz este ejercicio: ponte de pie, estira tu espalda y alza los brazos hacia arriba con una gran sonrisa. Siente cómo cambió la energía.', iconType: 'Star' },
+            
+            // 11. Agenda Silencem (Antes día 8)
+            { day: 11, type: 'promo', title: 'Agenda Silencem', text: 'Organiza tu 2026 con propósito. Accede al botón de abajo para ver si puedes obtener algún descuento.', action: 'VER AGENDA', link: LINKS.agenda, iconType: 'ShoppingBag' },
+            
+            // 12. Conexión (Antes día 20)
+            { day: 12, type: 'action', title: 'Conexión', text: 'Escribe a esa amiga que hace mucho que no ves. Cultiva tus relaciones.', iconType: 'Heart' },
+            
+            // 13. Amazon Music (Antes día 10)
+            { day: 13, type: 'gift', title: 'Amazon Music', text: 'Escucha tu música favorita para sentir más energía positiva al despertar.', action: 'SOLICITAR REGALO', link: LINKS.regaloMusic, iconType: 'Volume2' },
+            
+            // 14. Logros (Antes día 11)
+            { day: 14, type: 'reflection', title: 'Logros', text: 'Celebra una victoria pequeña de esta semana. No hay logro insignificante.', iconType: 'Star' },
+            
+            // 15. Energía (Antes día 16)
+            { day: 15, type: 'reflection', title: 'Energía', text: '¿Quiénes son las 3 personas que más te inspiran actualmente?', iconType: 'Heart' },
+            
+            // 16. Libro Recomendación (Antes día 13)
+            { day: 16, type: 'recommendation', title: 'Recomendación', text: 'Libro con los fundamentos para cambiarte a tí y así la realidad que vives.', action: 'Ver Recomendación', link: LINKS.amazon, iconType: 'BookOpen' },
+            
+            // 17. Miedos (Antes día 18)
+            { day: 17, type: 'reflection', title: 'Miedos', text: '¿Qué harías si supieras que no vas a fallar?', iconType: 'Star' },
+            
+            // 18. Orden (Antes día 9)
+            { day: 18, type: 'action', title: 'Orden', text: 'El orden externo trae calma interna. Organiza hoy solo un cajón o tu escritorio.', iconType: 'BookOpen' },
+            
+            // 19. Prime Video (Igual)
             { day: 19, type: 'gift', title: 'Prime Video', text: 'Mira una prueba gratuita de tus series favoritas esta navidad. TV + mantita = relax asegurado.', action: 'SOLICITAR REGALO', link: LINKS.regaloPrime, iconType: 'Gift' },
-            { day: 20, type: 'action', title: 'Conexión', text: 'Escribe a esa amiga que hace mucho que no ves. Cultiva tus relaciones.', iconType: 'Heart' },
-            { day: 21, type: 'recommendation', title: 'Movimiento', text: 'Busca un momento y haz este ejercicio: ponte de pie, estira tu espalda y alza los brazos hacia arriba con una gran sonrisa. Siente cómo cambió la energía.', iconType: 'Star' },
-            { day: 22, type: 'mindset', title: 'Afirmación', text: 'Repite conmigo: "Merezco recibir éxito, abundancia y paz".', iconType: 'Sparkles' },
-            { day: 23, type: 'action', title: 'Carta Futura', text: 'Escribe una carta a tu yo del próximo diciembre 2025. Guárdala.', iconType: 'BookOpen' },
+            
+            // 20. Descanso (Antes día 17)
+            { day: 20, type: 'mindset', title: 'Descanso', text: 'La productividad también es descansar. Hoy permítete no hacer nada productivo por 1h.', iconType: 'VolumeX' },
+            
+            // 21. Afirmación (Antes día 22)
+            { day: 21, type: 'mindset', title: 'Afirmación', text: 'Repite conmigo: "Merezco recibir éxito, abundancia y paz".', iconType: 'Sparkles' },
+            
+            // 22. Carta Futura (Antes día 23)
+            { day: 22, type: 'action', title: 'Carta Futura', text: 'Escribe una carta a tu yo del próximo diciembre 2025. Guárdala.', iconType: 'BookOpen' },
+            
+            // 23. Visualización (Antes día 15)
+            { day: 23, type: 'mindset', title: 'Visualización', text: 'Imagina tu versión de enero 2026. ¿Cómo viste? ¿De qué habla? Siéntelo ahora y toma notas.', iconType: 'Sparkles' },
+            
+            // 24. Final (Igual)
             { day: 24, type: 'promo', title: 'GRAN FINAL', text: '¡Feliz Navidad! Pulsa el botón para una sorpresa especial.', action: 'CANJEAR SORPRESA', link: LINKS.sorpresaFinal, iconType: 'Gift' },
         ];
 
