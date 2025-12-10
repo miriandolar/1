@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
     
-    <!-- LIBRERÍAS (Configuración V22) -->
+    <!-- LIBRERÍAS (Configuración V24) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -79,55 +79,55 @@
             // 7. Micro-lujo
             { day: 7, type: 'action', title: 'Micro-lujo', text: 'Hoy date un pequeño lujo: ese té especial, una mascarilla o 10 min de silencio absoluto.', iconType: 'Gift' },
             
-            // 8. Gratitud (Antes día 12)
+            // 8. Gratitud
             { day: 8, type: 'mindset', title: 'Gratitud', text: 'Escribe 3 cosas simples por las que agradeces hoy (un café, el sol, una sonrisa).', iconType: 'Star' },
             
-            // 9. Playlist Relax (Antes día 14)
+            // 9. Playlist Relax
             { day: 9, type: 'recommendation', title: 'Playlist Relax', text: 'Mi recomendación musical para trabajar en tus metas sin distracciones.', action: 'ESCUCHAR', link: LINKS.musica, iconType: 'Volume2' },
             
-            // 10. Movimiento (Antes día 21)
+            // 10. Movimiento
             { day: 10, type: 'recommendation', title: 'Movimiento', text: 'Busca un momento y haz este ejercicio: ponte de pie, estira tu espalda y alza los brazos hacia arriba con una gran sonrisa. Siente cómo cambió la energía.', iconType: 'Star' },
             
-            // 11. Agenda Silencem (Antes día 8)
-            { day: 11, type: 'promo', title: 'Agenda Silencem', text: 'Organiza tu 2026 con propósito. Accede al botón de abajo para ver si puedes obtener algún descuento.', action: 'VER AGENDA', link: LINKS.agenda, iconType: 'ShoppingBag' },
+            // 11. Agenda Silencem (ACTUALIZADO: Solo dice "Recomendación")
+            { day: 11, type: 'recommendation', title: 'Recomendación', text: 'La diferencia entre el estrés y la serenidad es la planificación. Te recomiendo este método para organizarte con propósito y éxito.', action: 'DESCUBRE MÁS', link: LINKS.agenda, iconType: 'ShoppingBag' },
             
-            // 12. Conexión (Antes día 20)
+            // 12. Conexión
             { day: 12, type: 'action', title: 'Conexión', text: 'Escribe a esa amiga que hace mucho que no ves. Cultiva tus relaciones.', iconType: 'Heart' },
             
-            // 13. Amazon Music (Antes día 10)
+            // 13. Amazon Music
             { day: 13, type: 'gift', title: 'Amazon Music', text: 'Escucha tu música favorita para sentir más energía positiva al despertar.', action: 'SOLICITAR REGALO', link: LINKS.regaloMusic, iconType: 'Volume2' },
             
-            // 14. Logros (Antes día 11)
+            // 14. Logros
             { day: 14, type: 'reflection', title: 'Logros', text: 'Celebra una victoria pequeña de esta semana. No hay logro insignificante.', iconType: 'Star' },
             
-            // 15. Energía (Antes día 16)
+            // 15. Energía
             { day: 15, type: 'reflection', title: 'Energía', text: '¿Quiénes son las 3 personas que más te inspiran actualmente?', iconType: 'Heart' },
             
-            // 16. Libro Recomendación (Antes día 13)
+            // 16. Libro Recomendación
             { day: 16, type: 'recommendation', title: 'Recomendación', text: 'Libro con los fundamentos para cambiarte a tí y así la realidad que vives.', action: 'Ver Recomendación', link: LINKS.amazon, iconType: 'BookOpen' },
             
-            // 17. Miedos (Antes día 18)
+            // 17. Miedos
             { day: 17, type: 'reflection', title: 'Miedos', text: '¿Qué harías si supieras que no vas a fallar?', iconType: 'Star' },
             
-            // 18. Orden (Antes día 9)
+            // 18. Orden
             { day: 18, type: 'action', title: 'Orden', text: 'El orden externo trae calma interna. Organiza hoy solo un cajón o tu escritorio.', iconType: 'BookOpen' },
             
-            // 19. Prime Video (Igual)
+            // 19. Prime Video
             { day: 19, type: 'gift', title: 'Prime Video', text: 'Mira una prueba gratuita de tus series favoritas esta navidad. TV + mantita = relax asegurado.', action: 'SOLICITAR REGALO', link: LINKS.regaloPrime, iconType: 'Gift' },
             
-            // 20. Descanso (Antes día 17)
+            // 20. Descanso
             { day: 20, type: 'mindset', title: 'Descanso', text: 'La productividad también es descansar. Hoy permítete no hacer nada productivo por 1h.', iconType: 'VolumeX' },
             
-            // 21. Afirmación (Antes día 22)
+            // 21. Afirmación
             { day: 21, type: 'mindset', title: 'Afirmación', text: 'Repite conmigo: "Merezco recibir éxito, abundancia y paz".', iconType: 'Sparkles' },
             
-            // 22. Carta Futura (Antes día 23)
+            // 22. Carta Futura
             { day: 22, type: 'action', title: 'Carta Futura', text: 'Escribe una carta a tu yo del próximo diciembre 2025. Guárdala.', iconType: 'BookOpen' },
             
-            // 23. Visualización (Antes día 15)
+            // 23. Visualización
             { day: 23, type: 'mindset', title: 'Visualización', text: 'Imagina tu versión de enero 2026. ¿Cómo viste? ¿De qué habla? Siéntelo ahora y toma notas.', iconType: 'Sparkles' },
             
-            // 24. Final (Igual)
+            // 24. Final
             { day: 24, type: 'promo', title: 'GRAN FINAL', text: '¡Feliz Navidad! Pulsa el botón para una sorpresa especial.', action: 'CANJEAR SORPRESA', link: LINKS.sorpresaFinal, iconType: 'Gift' },
         ];
 
@@ -226,6 +226,7 @@
                 data.action.includes('CANJEAR') || 
                 data.action.includes('VER AGENDA') ||
                 data.action.includes('Ver Recomendación') ||
+                data.action.includes('DESCUBRE') || 
                 data.action.includes('ESCUCHAR')
             );
             
