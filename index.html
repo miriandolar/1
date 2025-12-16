@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendario de Adviento 2025 - Silencem</title>
     
-    <!-- LIBRERÍAS (Configuración V24) -->
+    <!-- LIBRERÍAS (Configuración V25) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -48,7 +48,8 @@
             regaloAudible: "https://link.miriamlara.es/regalo2",
             regaloMusic: "https://link.miriamlara.es/regalo3",
             regaloPrime: "https://link.miriamlara.es/regalo4",
-            sorpresaFinal: "https://link.miriamlara.es/sorpresa"
+            sorpresaFinal: "https://link.miriamlara.es/sorpresa",
+            libroRecomendado: "https://amzn.to/4oUWzck" // <--- ENLACE ACTUALIZADO DÍA 16
         };
 
         const BRANDING = {
@@ -88,7 +89,7 @@
             // 10. Movimiento
             { day: 10, type: 'recommendation', title: 'Movimiento', text: 'Busca un momento y haz este ejercicio: ponte de pie, estira tu espalda y alza los brazos hacia arriba con una gran sonrisa. Siente cómo cambió la energía.', iconType: 'Star' },
             
-            // 11. Agenda Silencem (ACTUALIZADO: Solo dice "Recomendación")
+            // 11. Agenda Silencem
             { day: 11, type: 'recommendation', title: 'Recomendación', text: 'La diferencia entre el estrés y la serenidad es la planificación. Te recomiendo este método para organizarte con propósito y éxito.', action: 'DESCUBRE MÁS', link: LINKS.agenda, iconType: 'ShoppingBag' },
             
             // 12. Conexión
@@ -103,8 +104,8 @@
             // 15. Energía
             { day: 15, type: 'reflection', title: 'Energía', text: '¿Quiénes son las 3 personas que más te inspiran actualmente?', iconType: 'Heart' },
             
-            // 16. Libro Recomendación
-            { day: 16, type: 'recommendation', title: 'Recomendación', text: 'Libro con los fundamentos para cambiarte a tí y así la realidad que vives.', action: 'Ver Recomendación', link: LINKS.amazon, iconType: 'BookOpen' },
+            // 16. Libro Recomendación (ENLACE ACTUALIZADO)
+            { day: 16, type: 'recommendation', title: 'Recomendación', text: 'Libro con los fundamentos para cambiarte a tí y así la realidad que vives.', action: 'Ver Recomendación', link: LINKS.libroRecomendado, iconType: 'BookOpen' },
             
             // 17. Miedos
             { day: 17, type: 'reflection', title: 'Miedos', text: '¿Qué harías si supieras que no vas a fallar?', iconType: 'Star' },
